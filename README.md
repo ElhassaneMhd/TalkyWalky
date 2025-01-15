@@ -1,4 +1,3 @@
-**Project Description:**  
 This project is a Java-based networking chat application that leverages the power of **IPv6 addresses** to establish real-time communication between users. The backend is implemented using Java sockets, enabling direct, efficient, and reliable peer-to-peer messaging. The application is designed to support modern networking standards, ensuring compatibility with IPv6 infrastructure for enhanced scalability and global connectivity.
 
 Key features include:  
