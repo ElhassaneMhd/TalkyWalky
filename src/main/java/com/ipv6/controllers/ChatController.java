@@ -29,18 +29,18 @@ public class ChatController {
         return message; // Broadcast the message to all subscribed clients
     }
 
-    @MessageMapping("/chat/private")
-    public void sendPrivateMessage(Message message) {
-        if (message.getReceiver() == null) {
-            throw new IllegalArgumentException("Receiver must be specified!");
-        }
-
-        brokerMessagingTemplate.convertAndSendToUser(
-                message.getReceiver(), // Receiver's username
-                "/queue/messages",     // Destination
-                message                // Message content
-        );
-    }
+//    @MessageMapping("/chat/private")
+//    public void sendPrivateMessage(Message message) {
+//        if (message.getReceiver() == null) {
+//            throw new IllegalArgumentException("Receiver must be specified!");
+//        }
+//
+//        brokerMessagingTemplate.convertAndSendToUser(
+//                message.getReceiver(), // Receiver's username
+//                "/queue/messages",     // Destination
+//                message                // Message content
+//        );
+//    }
 
 
 }
