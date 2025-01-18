@@ -20,7 +20,6 @@ public class ChatController {
     public Message sendMessage(@Payload Message message ,SimpMessageHeaderAccessor headerAccessor)  {
         String sessionId = headerAccessor.getSessionId(); // Get session ID of the sender
         message.setId(sessionId); // Set the session ID as the message ID
-        message.setReceiver(message.getReceiver());
         message.setTimestamp(new Date()); // Set the timestamp of the message
         return message; // Broadcast the message to all subscribed clients
     }

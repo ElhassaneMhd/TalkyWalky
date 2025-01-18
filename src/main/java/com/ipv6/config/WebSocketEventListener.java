@@ -25,9 +25,9 @@ public class WebSocketEventListener {
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectEvent event) {
         String sessionId = SimpMessageHeaderAccessor.wrap(event.getMessage()).getSessionId();
-//       get header named type
+        //       get header named type
         String type = SimpMessageHeaderAccessor.wrap(event.getMessage()).getFirstNativeHeader("type");
-// get name
+        // get name
         String name = SimpMessageHeaderAccessor.wrap(event.getMessage()).getFirstNativeHeader("name");
 
 
@@ -52,7 +52,6 @@ public class WebSocketEventListener {
             });
         }
 
-        broadcastSessionId(sessionId);
         broadcastConnectedUsers();
     }
 
@@ -73,9 +72,7 @@ public class WebSocketEventListener {
         messagingTemplate.convertAndSend("/topic/users", connectedUsers);
     }
 
-    private void broadcastSessionId(String sessionId) {
-        // Broadcast the session ID to a specific topic
-        messagingTemplate.convertAndSend("/topic/session", sessionId);
-    }
+
+
 
 }
