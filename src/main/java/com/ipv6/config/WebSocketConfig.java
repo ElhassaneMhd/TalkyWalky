@@ -12,16 +12,17 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic"); // Enables a message broker for topics
+        config.enableSimpleBroker("/topic", "/queue"); // Broker destinations
         config.setApplicationDestinationPrefixes("/app"); // Prefix for client-to-server messages
+        config.setUserDestinationPrefix("/user");        // Prefix for user-specific messages
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
-                .setAllowedOriginPatterns("https://chatwithestk.netlify.app","http://localhost:5173" ,"http://localhost:1420/"
-                        ,"http://tauri.localhost") // Replace with your Netlify domain
-                .withSockJS(); // WebSocket endpoint
+                .setAllowedOriginPatterns("http://localhost:"
+                        ,"http://tauri.localhost")
+                .withSockJS();
     }
 
 
