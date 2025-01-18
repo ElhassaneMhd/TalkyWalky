@@ -1,15 +1,13 @@
 package com.ipv6.controllers;
 
-import com.ipv6.models.User;
+import java.util.ArrayList;
+
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.concurrent.ConcurrentHashMap;
+import com.ipv6.models.User;
 
 @Controller
 public class UserController {

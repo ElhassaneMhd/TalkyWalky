@@ -1,6 +1,8 @@
 package com.ipv6.config;
 
-import com.ipv6.models.User;
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -8,10 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.ipv6.models.User;
 
 @Component
 public class WebSocketEventListener {
