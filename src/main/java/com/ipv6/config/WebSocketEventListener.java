@@ -25,11 +25,8 @@ public class WebSocketEventListener {
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectEvent event) {
         String sessionId = SimpMessageHeaderAccessor.wrap(event.getMessage()).getSessionId();
-        //       get header named type
         String type = SimpMessageHeaderAccessor.wrap(event.getMessage()).getFirstNativeHeader("type");
-        // get name
         String name = SimpMessageHeaderAccessor.wrap(event.getMessage()).getFirstNativeHeader("name");
-
 
         boolean userExists = connectedUsers.stream().anyMatch(user -> user.getId().equals(sessionId));
         boolean nameExists = connectedUsers.stream().anyMatch(user -> user.getName().equals(name));
@@ -68,7 +65,6 @@ public class WebSocketEventListener {
 
 
     private void broadcastConnectedUsers() {
-        // Broadcast the connected users to a specific topic
         messagingTemplate.convertAndSend("/topic/users", connectedUsers);
     }
 
