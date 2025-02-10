@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /** Light Mode */
+
+  &,
+  &.light {
+    --background-primary: rgb(255, 255, 255);
+    --background-secondary: rgb(240, 240, 240);
+    --background-tertiary: rgb(224, 224, 224);
+    --background-disabled: rgb(245, 245, 245);
+    --text-primary: rgb(0, 0, 0);
+    --text-secondary: rgb(51, 51, 51);
+    --text-tertiary: rgb(102, 102, 102);
+    --text-disabled: rgb(187, 187, 187);
+    --text-placeholder: rgb(225, 225, 224);
+    --border: rgba(0, 0, 0, 0.1);
+
+    color-scheme: light;
+  }
+
+  /** Dark Mode */
+
+  &.dark {
+    --background-primary: rgb(13, 13, 13);
+    --background-secondary: rgb(25, 25, 25);
+    --background-tertiary: rgb(33, 33, 33);
+    --background-disabled: rgb(20, 17, 17);
+    --text-primary: rgb(255, 255, 255);
+    --text-secondary: rgb(202, 202, 202);
+    --text-tertiary: rgb(179, 179, 179);
+    --text-disabled: rgb(68, 68, 68);
+    --text-placeholder: rgb(55, 55, 55);
+    --border: rgba(255, 255, 255, 0.1);
+
+    color-scheme: dark;
+  }
+
+  /** Primary Color */
+
+  &.light[data-theme="orange"],
+  button.orange {
+    --primary: rgb(246, 162, 40);
+    --primary-hover: rgb(204, 138, 62);
+  }
+
+  &.dark[data-theme="orange"],
+  button.orange {
+    --primary: rgb(181, 117, 62);
+    --primary-hover: rgb(138, 78, 44);
+  }
+
+  &[data-theme="indigo"],
+  button.indigo {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+  }
+
+  &[data-theme="green"],
+  button.green {
+    --primary: #008000;
+    --primary-hover: #006600;
+  }
+
+  &[data-theme="crimson"],
+  button.crimson {
+    --primary: #dc143c;
+    --primary-hover: #b01030;
+  }
+
+  &[data-theme="purple"],
+  button.purple {
+    --primary: #6f42c1;
+    --primary-hover: #5c35b1;
+  }
+
+  &[data-theme="teal"],
+  button.teal {
+    --primary: #008080;
+    --primary-hover: #006666;
+  }
+
+  &[data-theme="olive"],
+  button.olive {
+    --primary: #3d9970;
+    --primary-hover: #358563;
+  }
+
+  &[data-theme="maroon"],
+  button.maroon {
+    --primary: #85144b;
+    --primary-hover: #701141;
+  }
+
+  &[data-theme="navy"],
+  button.navy {
+    --primary: #000080;
+    --primary-hover: #000066;
+  }
+
+  /** primary color */
+  --primary: rgb(246, 162, 40);
+  --primary-hover: rgb(204, 138, 62);
+
+  /** Secondary color */
+
+  --secondary: rgb(122, 102, 255);
+  --secondary-hover: rgb(77, 56, 150);
+}
+
+* {
+  @apply box-border scroll-smooth;
+}
+
+body {
+  font-family: "Lexend Deca", sans-serif;
+  /* @apply h-[100dvh] bg-background-primary !important; */
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  @apply w-0.5 h-1;  
+  
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-md bg-text-tertiary;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-corner {
+  @apply bg-transparent;
+}
+.no_scrollbar::-webkit-scrollbar {
+  display: none;
+}
