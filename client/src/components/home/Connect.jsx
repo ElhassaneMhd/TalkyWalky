@@ -18,7 +18,6 @@ export function Connect() {
       toast.error("Name can't be empty");
       return;
     }
-
     changeUser(newUser);
 
     if (!stompClient) {

@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
   let stpClient = null;
 
   const connect = (u, x) => {
-    const socket = new SockJS("http://[fe80::e0e7:a130:e63:3678]:8089/ws");
+    const socket = new SockJS("http://[fe80::d533:515d:ae9:aed6]:8000/ws");
     stpClient = Stomp.over(socket);
     stpClient.connect(
       { name: u ?? user },
@@ -23,14 +23,10 @@ export function AuthProvider({ children }) {
         stpClient.subscribe("/topic/messages", (msg) => {
           setMsgs((e) => [...e, JSON.parse(msg.body)]);
         });
-        
-
         stpClient.subscribe("/topic/users", (msg) => {
           const users = JSON.parse(msg.body)?.filter((us) => us.name !== user);
           setConnectedUsers(users);
-          console.log("Connected users:", users);
         });
-        
         x(stpClient);
       },
       (error) => {
@@ -40,14 +36,8 @@ export function AuthProvider({ children }) {
     if (stompClient) toast.success("Connected to chat server");
   };
 
-  const sendMessage = (msg, receiver = null) => {
-    stompClient.send(
-      `/app/chat${receiver ? "/private" : ""}`,
-      {
-        receiver,
-      },
-      JSON.stringify({ ...msg })
-    );
+  const sendMessage = (msg) => {
+    stompClient.send("/app/chat", {}, JSON.stringify({ ...msg }));
   };
 
   useEffect(() => {

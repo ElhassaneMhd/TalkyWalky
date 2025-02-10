@@ -26,11 +26,10 @@ export default function Chat() {
     }
     sendMessage(msg);
     setMsg({ ...msg, content: "" });
-    sendMessage(msg, "med");
   };
 
   useEffect(() => {
-    const socket = new SockJS("http://[fe80::e0e7:a130:e63:3678]:8089/ws");
+    const socket = new SockJS("http://[fe80::d533:515d:ae9:aed6]:8000/ws");
     const stpClient = Stomp.over(socket);
 
     stpClient.connect(
@@ -41,15 +40,10 @@ export default function Chat() {
         stpClient.subscribe("/topic/users", (msg) => {
           setConnectedUsers(JSON.parse(msg.body));
         });
-        stpClient.subscribe("/med/queue/messages", (message) => {
-          const parsedMessage = JSON.parse(message.body);
-          console.log(parsedMessage);
-        });
       }
     );
     setTimeout(() => stpClient.disconnect(), 2000);
   }, []);
-
   return (
     <section className="p-1 overflow-hidden flex items-center justify-center relative bg-gradient-to-br from-background-tertiary to-background-primary rounded-lg border border-border max-h-[80vh] ">
       <div className="absolute top-0 left-0 right-0 p-2 bg-background-tertiary rounded-t-lg border border-border z-10 h-[10%]">
